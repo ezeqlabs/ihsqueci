@@ -53,7 +53,8 @@ public class ListaLugaresActivity extends AppCompatActivity {
         adicionaLugar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(ListaLugaresActivity.this, "Novo lugar", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(ListaLugaresActivity.this, FormularioLugaresActivity.class);
+                startActivity(intent);
             }
         });
     }

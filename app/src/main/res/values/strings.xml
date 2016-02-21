@@ -2,4 +2,8 @@
     <string name="app_name">Ih! Squeci</string>
     <string name="title_activity_lista_lugares">ListaLugaresActivity</string>
     <string name="title_activity_teste">TesteActivity</string>
+
+    <!-- FORMULARIO -->
+    <string name="formulario_hint_nome">Nome</string>
+    <string name="formulario_hint_trouxe">Não posso esquecer</string>
 </resources>
