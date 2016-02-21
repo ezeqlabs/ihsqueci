@@ -1,5 +1,6 @@
 package br.com.ezeqlabs.ihsqueci;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -17,6 +18,10 @@ public class ListaLugaresActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_lugares);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(R.string.app_name);
 
         ListView listaLugares = (ListView) findViewById(R.id.lista_lugares);
         String[] lugares = {"Mooca", "São Paulo", "Manaus", "São Paulo", "Manaus", "São Paulo", "Manaus", "São Paulo", "Manaus", "São Paulo", "Manaus", "São Paulo", "Manaus", "São Paulo", "Manaus", "São Paulo", "Manaus"};

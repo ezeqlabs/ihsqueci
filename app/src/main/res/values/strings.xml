@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Ih! Squeci</string>
     <string name="title_activity_lista_lugares">ListaLugaresActivity</string>
+    <string name="title_activity_teste">TesteActivity</string>
 </resources>
