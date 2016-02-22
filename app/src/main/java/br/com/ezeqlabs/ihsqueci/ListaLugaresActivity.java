@@ -1,15 +1,20 @@
 package br.com.ezeqlabs.ihsqueci;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.ContextMenu;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -33,11 +38,27 @@ public class ListaLugaresActivity extends AppCompatActivity {
         alteraCorBarraStatus();
         populaListagem();
         trataFloatingButton();
+
+        registerForContextMenu(listaLugares);
     }
 
     protected void onResume(){
         super.onResume();
         this.populaListagem();
+    }
+
+    public void onCreateContextMenu(ContextMenu menu, View view, ContextMenu.ContextMenuInfo menuInfo){
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
+        final Lugar lugarSelecionado = (Lugar) listaLugares.getAdapter().getItem(info.position);
+
+        MenuItem apagar = menu.add("Apagar");
+        apagar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                deletaLugar(lugarSelecionado);
+                return false;
+            }
+        });
     }
 
     private void adicionaToolBar(){
@@ -72,6 +93,28 @@ public class ListaLugaresActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void deletaLugar(final Lugar lugar){
+        new AlertDialog.Builder(ListaLugaresActivity.this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle("Apagar lugar")
+                .setMessage("Tem certeza que deseja deletar este lugar?")
+                .setPositiveButton("Sim",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                LugarDAO dao = new LugarDAO(ListaLugaresActivity.this);
+                                dao.deletar(lugar);
+                                dao.close();
+
+                                Toast.makeText(ListaLugaresActivity.this, (lugar.getNome() + " apagado com sucesso"), Toast.LENGTH_SHORT).show();
+
+                                populaListagem();
+                            }
+                        })
+                .setNegativeButton("Não", null)
+                .show();
     }
 
 }

@@ -58,4 +58,9 @@ public class LugarDAO extends SQLiteOpenHelper {
         c.close();
         return lugares;
     }
+
+    public void deletar(Lugar lugar){
+        String[] args = { lugar.getId().toString() };
+        getWritableDatabase().delete(TABELA, "id=?", args);
+    }
 }
