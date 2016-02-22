@@ -35,11 +35,21 @@ public class ListaLugaresActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lista_lugares);
 
         adicionaToolBar();
-        alteraCorBarraStatus();
+        //alteraCorBarraStatus();
         populaListagem();
         trataFloatingButton();
 
         registerForContextMenu(listaLugares);
+
+        listaLugares.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent detalhe = new Intent(ListaLugaresActivity.this, DetalheLugarActivity.class);
+
+                detalhe.putExtra("lugarSelecionado", (Lugar) listaLugares.getItemAtPosition(position));
+                startActivity(detalhe);
+            }
+        });
     }
 
     protected void onResume(){
@@ -67,12 +77,14 @@ public class ListaLugaresActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(R.string.app_name);
     }
 
+    /*
     private void alteraCorBarraStatus(){
         Window window = this.getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.setStatusBarColor(this.getResources().getColor(R.color.colorPrimaryDark));
     }
+    */
 
     private void populaListagem(){
         listaLugares = (ListView) findViewById(R.id.lista_lugares);

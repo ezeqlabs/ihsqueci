@@ -6,6 +6,6 @@
         android:id="@+id/menu_formulario_ok"
         android:icon="@drawable/ic_salvar"
         app:showAsAction="always"
-        android:title="Salvar" />
+        android:title="@string/salvar" />
 
 </menu>
