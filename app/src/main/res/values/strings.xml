@@ -2,8 +2,17 @@
     <string name="app_name">Ih! Squeci</string>
     <string name="title_activity_lista_lugares">ListaLugaresActivity</string>
     <string name="title_activity_teste">TesteActivity</string>
+    <string name="sim">Sim</string>
+    <string name="nao">Não</string>
 
     <!-- FORMULARIO -->
     <string name="formulario_hint_nome">Nome do lugar</string>
     <string name="formulario_hint_trouxe">Não posso esquecer</string>
+
+    <!-- MENU LISTA LUGARES -->
+    <string name="apagar_lugar">Apagar este lugar</string>
+
+    <!-- APAGAR LUGAR -->
+    <string name="title_dialog">Apagar lugar</string>
+    <string name="message_dialog">Tem certeza que deseja deletar este lugar?</string>
 </resources>

@@ -51,7 +51,7 @@ public class ListaLugaresActivity extends AppCompatActivity {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
         final Lugar lugarSelecionado = (Lugar) listaLugares.getAdapter().getItem(info.position);
 
-        MenuItem apagar = menu.add("Apagar");
+        MenuItem apagar = menu.add(R.string.apagar_lugar);
         apagar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -98,9 +98,9 @@ public class ListaLugaresActivity extends AppCompatActivity {
     private void deletaLugar(final Lugar lugar){
         new AlertDialog.Builder(ListaLugaresActivity.this)
                 .setIcon(android.R.drawable.ic_dialog_alert)
-                .setTitle("Apagar lugar")
-                .setMessage("Tem certeza que deseja deletar este lugar?")
-                .setPositiveButton("Sim",
+                .setTitle(R.string.title_dialog)
+                .setMessage(R.string.message_dialog)
+                .setPositiveButton(R.string.sim,
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -113,7 +113,7 @@ public class ListaLugaresActivity extends AppCompatActivity {
                                 populaListagem();
                             }
                         })
-                .setNegativeButton("Não", null)
+                .setNegativeButton(R.string.nao, null)
                 .show();
     }
 
