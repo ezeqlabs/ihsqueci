@@ -9,7 +9,12 @@ import android.view.View;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import br.com.ezeqlabs.ihsqueci.dao.LugarDAO;
+import br.com.ezeqlabs.ihsqueci.helpers.FormularioLugaresHelper;
+import br.com.ezeqlabs.ihsqueci.modelo.Lugar;
+
 public class FormularioLugaresActivity extends AppCompatActivity {
+    private FormularioLugaresHelper helper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +23,8 @@ public class FormularioLugaresActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        this.helper = new FormularioLugaresHelper(this);
 
     }
 
@@ -31,8 +38,23 @@ public class FormularioLugaresActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
             case R.id.menu_formulario_ok:
-                Toast.makeText(this, "Salvar", Toast.LENGTH_SHORT).show();
-                finish();
+                Lugar lugar = helper.pegaLugarDoFormulario();
+
+                if(helper.temNome()){
+                    if(helper.trouxeAlgo()){
+                        LugarDAO dao = new LugarDAO(this);
+                        dao.insere(lugar);
+                        dao.close();
+
+                        Toast.makeText(this, (lugar.getNome().toString() + " adicionado com sucesso"), Toast.LENGTH_SHORT).show();
+                        finish();
+                    }else{
+                        helper.erroTrouxe();
+                    }
+                }else{
+                    helper.erroNome();
+                }
+
                 return false;
             default:
                 return super.onOptionsItemSelected(item);

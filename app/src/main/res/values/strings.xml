@@ -4,6 +4,6 @@
     <string name="title_activity_teste">TesteActivity</string>
 
     <!-- FORMULARIO -->
-    <string name="formulario_hint_nome">Nome</string>
+    <string name="formulario_hint_nome">Nome do lugar</string>
     <string name="formulario_hint_trouxe">Não posso esquecer</string>
 </resources>

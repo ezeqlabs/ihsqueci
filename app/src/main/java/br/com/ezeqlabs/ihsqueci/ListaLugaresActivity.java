@@ -14,7 +14,15 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import br.com.ezeqlabs.ihsqueci.dao.LugarDAO;
+import br.com.ezeqlabs.ihsqueci.modelo.Lugar;
+
 public class ListaLugaresActivity extends AppCompatActivity {
+    private List<Lugar> lugares;
+    private ListView listaLugares;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +33,11 @@ public class ListaLugaresActivity extends AppCompatActivity {
         alteraCorBarraStatus();
         populaListagem();
         trataFloatingButton();
+    }
+
+    protected void onResume(){
+        super.onResume();
+        this.populaListagem();
     }
 
     private void adicionaToolBar(){
@@ -41,10 +54,12 @@ public class ListaLugaresActivity extends AppCompatActivity {
     }
 
     private void populaListagem(){
-        ListView listaLugares = (ListView) findViewById(R.id.lista_lugares);
-        String[] lugares = {"Mooca", "São Paulo", "Manaus", "São Paulo", "Manaus", "São Paulo", "Manaus", "São Paulo", "Manaus", "São Paulo", "Manaus", "São Paulo", "Manaus", "São Paulo", "Manaus", "São Paulo", "Manaus"};
+        listaLugares = (ListView) findViewById(R.id.lista_lugares);
+        LugarDAO dao = new LugarDAO(this);
+        lugares = dao.getListaLugares();
+        dao.close();
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, lugares);
+        ArrayAdapter<Lugar> adapter = new ArrayAdapter<Lugar>(this, android.R.layout.simple_list_item_1, lugares);
         listaLugares.setAdapter(adapter);
     }
 

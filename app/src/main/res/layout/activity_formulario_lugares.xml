@@ -9,14 +9,14 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/campo_nome"
+            android:id="@+id/formulario_campo_nome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/formulario_hint_nome"
             android:layout_marginBottom="16dp" />
 
         <EditText
-            android:id="@+id/campo_trouxe"
+            android:id="@+id/formulario_campo_trouxe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="260dp"
