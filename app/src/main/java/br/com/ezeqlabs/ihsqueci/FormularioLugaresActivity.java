@@ -24,6 +24,7 @@ public class FormularioLugaresActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+
         this.helper = new FormularioLugaresHelper(this);
 
     }

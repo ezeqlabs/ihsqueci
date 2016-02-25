@@ -8,10 +8,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import br.com.ezeqlabs.ihsqueci.helpers.LugaresHelper;
 import br.com.ezeqlabs.ihsqueci.modelo.Lugar;
 
 public class DetalheLugarActivity extends AppCompatActivity {
     private Lugar lugar;
+    private LugaresHelper helper = new LugaresHelper(DetalheLugarActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +46,7 @@ public class DetalheLugarActivity extends AppCompatActivity {
                 Toast.makeText(this, naoImplementado, Toast.LENGTH_SHORT).show();
                 return false;
             case R.id.menu_detalhe_apagar:
-                Toast.makeText(this, naoImplementado, Toast.LENGTH_SHORT).show();
-                return false;
+                helper.deletaLugar(lugar);
             default:
                 return super.onOptionsItemSelected(item);
         }

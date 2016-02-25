@@ -1,5 +1,6 @@
 package br.com.ezeqlabs.ihsqueci;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -23,11 +24,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.ezeqlabs.ihsqueci.dao.LugarDAO;
+import br.com.ezeqlabs.ihsqueci.helpers.LugaresHelper;
 import br.com.ezeqlabs.ihsqueci.modelo.Lugar;
 
 public class ListaLugaresActivity extends AppCompatActivity {
     private List<Lugar> lugares;
     private ListView listaLugares;
+    private LugaresHelper helper = new LugaresHelper(ListaLugaresActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +39,10 @@ public class ListaLugaresActivity extends AppCompatActivity {
 
         adicionaToolBar();
         //alteraCorBarraStatus();
-        populaListagem();
+        helper.populaListagem();
         trataFloatingButton();
 
+        listaLugares = (ListView) findViewById(R.id.lista_lugares);
         registerForContextMenu(listaLugares);
 
         listaLugares.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -54,7 +58,7 @@ public class ListaLugaresActivity extends AppCompatActivity {
 
     protected void onResume(){
         super.onResume();
-        this.populaListagem();
+        helper.populaListagem();
     }
 
     public void onCreateContextMenu(ContextMenu menu, View view, ContextMenu.ContextMenuInfo menuInfo){
@@ -65,7 +69,7 @@ public class ListaLugaresActivity extends AppCompatActivity {
         apagar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                deletaLugar(lugarSelecionado);
+                helper.deletaLugar(lugarSelecionado);
                 return false;
             }
         });
@@ -86,16 +90,6 @@ public class ListaLugaresActivity extends AppCompatActivity {
     }
     */
 
-    private void populaListagem(){
-        listaLugares = (ListView) findViewById(R.id.lista_lugares);
-        LugarDAO dao = new LugarDAO(this);
-        lugares = dao.getListaLugares();
-        dao.close();
-
-        ArrayAdapter<Lugar> adapter = new ArrayAdapter<Lugar>(this, android.R.layout.simple_list_item_1, lugares);
-        listaLugares.setAdapter(adapter);
-    }
-
     private void trataFloatingButton(){
         FloatingActionButton adicionaLugar = (FloatingActionButton) findViewById(R.id.floating_adiciona_lugar);
         adicionaLugar.setOnClickListener(new View.OnClickListener() {
@@ -105,28 +99,6 @@ public class ListaLugaresActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
-
-    private void deletaLugar(final Lugar lugar){
-        new AlertDialog.Builder(ListaLugaresActivity.this)
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .setTitle(R.string.title_dialog)
-                .setMessage(R.string.message_dialog)
-                .setPositiveButton(R.string.sim,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                LugarDAO dao = new LugarDAO(ListaLugaresActivity.this);
-                                dao.deletar(lugar);
-                                dao.close();
-
-                                Toast.makeText(ListaLugaresActivity.this, (lugar.getNome() + " apagado com sucesso"), Toast.LENGTH_SHORT).show();
-
-                                populaListagem();
-                            }
-                        })
-                .setNegativeButton(R.string.nao, null)
-                .show();
     }
 
 }
