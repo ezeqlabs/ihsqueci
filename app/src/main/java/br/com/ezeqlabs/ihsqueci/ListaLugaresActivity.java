@@ -37,7 +37,6 @@ public class ListaLugaresActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_lugares);
 
-        adicionaToolBar();
         helper.populaListagem();
         trataFloatingButton();
 
@@ -72,12 +71,6 @@ public class ListaLugaresActivity extends AppCompatActivity {
                 return false;
             }
         });
-    }
-
-    private void adicionaToolBar(){
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(R.string.app_name);
     }
 
     private void trataFloatingButton(){

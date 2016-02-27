@@ -43,7 +43,7 @@ public class LugarDAO extends SQLiteOpenHelper {
 
     public List<Lugar> getListaLugares(){
         List<Lugar> lugares = new ArrayList<>();
-        Cursor c = getReadableDatabase().rawQuery("SELECT * FROM " + TABELA + ";", null);
+        Cursor c = getReadableDatabase().rawQuery("SELECT * FROM " + TABELA + " ORDER BY id DESC;", null);
 
         while(c.moveToNext()){
             Lugar lugar = new Lugar();

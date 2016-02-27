@@ -1,12 +1,15 @@
 <resources>
     <string name="app_name">Ih! Squeci</string>
-    <string name="title_activity_lista_lugares">ListaLugaresActivity</string>
+    <string name="title_activity_lista_lugares">Ih! Squeci</string>
     <string name="title_activity_teste">TesteActivity</string>
     <string name="sim">Sim</string>
     <string name="nao">Não</string>
     <string name="editar">Editar</string>
     <string name="apagar">Apagar</string>
     <string name="salvar">Salvar</string>
+
+    <!-- LISTA LUGARES -->
+    <string name="lista_descricao">Não esqueça mais nada por aí. Cadastre o lugar onde você está e o que trouxe.</string>
 
     <!-- FORMULARIO -->
     <string name="formulario_hint_nome">Nome do lugar</string>

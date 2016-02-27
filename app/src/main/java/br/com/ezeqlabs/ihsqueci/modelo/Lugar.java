@@ -33,6 +33,6 @@ public class Lugar implements Serializable {
 
     @Override
     public String toString() {
-        return getId() + " - " + getNome();
+        return getNome();
     }
 }
