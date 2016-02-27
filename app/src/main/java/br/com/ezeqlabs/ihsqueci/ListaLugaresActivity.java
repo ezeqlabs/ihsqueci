@@ -38,7 +38,6 @@ public class ListaLugaresActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lista_lugares);
 
         adicionaToolBar();
-        //alteraCorBarraStatus();
         helper.populaListagem();
         trataFloatingButton();
 
@@ -80,15 +79,6 @@ public class ListaLugaresActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(R.string.app_name);
     }
-
-    /*
-    private void alteraCorBarraStatus(){
-        Window window = this.getWindow();
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        window.setStatusBarColor(this.getResources().getColor(R.color.colorPrimaryDark));
-    }
-    */
 
     private void trataFloatingButton(){
         FloatingActionButton adicionaLugar = (FloatingActionButton) findViewById(R.id.floating_adiciona_lugar);
