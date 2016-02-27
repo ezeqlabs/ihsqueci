@@ -19,7 +19,8 @@
             android:id="@+id/formulario_campo_trouxe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="260dp"
+            android:lines="10"
+            android:gravity="top"
             android:hint="@string/formulario_hint_trouxe" />
 
     </LinearLayout>

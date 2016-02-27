@@ -4,8 +4,8 @@
     <string name="title_activity_teste">TesteActivity</string>
     <string name="sim">Sim</string>
     <string name="nao">Não</string>
-    <string name="editar">Editar</string>
-    <string name="apagar">Apagar</string>
+    <string name="editar">Editar este lugar</string>
+    <string name="apagar">Apagar este lugar</string>
     <string name="salvar">Salvar</string>
 
     <!-- LISTA LUGARES -->
@@ -20,7 +20,7 @@
 
     <!-- APAGAR LUGAR -->
     <string name="title_dialog">Apagar lugar</string>
-    <string name="message_dialog">Tem certeza que deseja deletar este lugar?</string>
+    <string name="message_dialog">Tem certeza que deseja apagar este lugar?</string>
 
     <!-- DETALHE LUGAR -->
     <string name="detalhe_lugar_estou">Eu estou em:</string>

@@ -63,7 +63,7 @@ public class ListaLugaresActivity extends AppCompatActivity {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
         final Lugar lugarSelecionado = (Lugar) listaLugares.getAdapter().getItem(info.position);
 
-        MenuItem apagar = menu.add(R.string.apagar_lugar);
+        MenuItem apagar = menu.add(R.string.apagar);
         apagar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
