@@ -41,6 +41,9 @@ public class DetalheLugarActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         switch(item.getItemId()){
+            case android.R.id.home:
+                this.finish();
+                return true;
             case R.id.menu_detalhe_editar:
                 helper.abreEdicaoLugar(lugar);
                 return false;
