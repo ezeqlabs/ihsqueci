@@ -3,6 +3,7 @@ package br.com.ezeqlabs.ihsqueci;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,6 +16,7 @@ import br.com.ezeqlabs.ihsqueci.modelo.Lugar;
 
 public class FormularioLugaresActivity extends AppCompatActivity {
     private FormularioLugaresHelper helper;
+    public static final String LUGAR_SELECIONADO = "lugarSelecionado";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +26,13 @@ public class FormularioLugaresActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        final Lugar lugarSelecionado = (Lugar) getIntent().getSerializableExtra(LUGAR_SELECIONADO);
 
         this.helper = new FormularioLugaresHelper(this);
+
+        if( lugarSelecionado != null ){
+            helper.colocaNoFormulario(lugarSelecionado);
+        }
 
     }
 
@@ -44,11 +51,10 @@ public class FormularioLugaresActivity extends AppCompatActivity {
                 if(helper.temNome()){
                     if(helper.trouxeAlgo()){
                         LugarDAO dao = new LugarDAO(this);
-                        dao.insere(lugar);
+                        dao.insereOuAtualiza(lugar);
                         dao.close();
 
-                        Toast.makeText(this, (lugar.getNome().toString() + " adicionado com sucesso"), Toast.LENGTH_SHORT).show();
-                        finish();
+                        finalizaAcao(lugar);
                     }else{
                         helper.erroTrouxe();
                     }
@@ -59,6 +65,17 @@ public class FormularioLugaresActivity extends AppCompatActivity {
                 return false;
             default:
                 return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void finalizaAcao(Lugar lugar){
+        if(lugar.getId() == null){
+            Toast.makeText(this, (lugar.getNome().toString() + " adicionado com sucesso"), Toast.LENGTH_SHORT).show();
+            finish();
+        }else{
+            Toast.makeText(this, (lugar.getNome().toString() + " alterado com sucesso"), Toast.LENGTH_SHORT).show();
+            Intent lista = new Intent(FormularioLugaresActivity.this, ListaLugaresActivity.class);
+            startActivity(lista);
         }
     }
 }

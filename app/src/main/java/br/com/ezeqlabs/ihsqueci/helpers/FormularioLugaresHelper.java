@@ -25,6 +25,13 @@ public class FormularioLugaresHelper {
         return lugar;
     }
 
+    public void colocaNoFormulario(Lugar lugar){
+        nome.setText(lugar.getNome());
+        trouxe.setText(lugar.getTrouxe());
+
+        this.lugar = lugar;
+    }
+
     public boolean temNome(){
         return !nome.getText().toString().isEmpty();
     }

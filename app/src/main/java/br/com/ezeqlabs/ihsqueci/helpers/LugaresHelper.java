@@ -4,12 +4,14 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.List;
 
+import br.com.ezeqlabs.ihsqueci.FormularioLugaresActivity;
 import br.com.ezeqlabs.ihsqueci.ListaLugaresActivity;
 import br.com.ezeqlabs.ihsqueci.R;
 import br.com.ezeqlabs.ihsqueci.dao.LugarDAO;
@@ -44,6 +46,12 @@ public class LugaresHelper {
                         })
                 .setNegativeButton(R.string.nao, null)
                 .show();
+    }
+
+    public void abreEdicaoLugar(final Lugar lugar){
+        Intent intent = new Intent(activity, FormularioLugaresActivity.class);
+        intent.putExtra("lugarSelecionado", lugar);
+        activity.startActivity(intent);
     }
 
     public void populaListagem(){

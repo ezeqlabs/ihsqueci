@@ -63,6 +63,15 @@ public class ListaLugaresActivity extends AppCompatActivity {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
         final Lugar lugarSelecionado = (Lugar) listaLugares.getAdapter().getItem(info.position);
 
+        MenuItem editar = menu.add(R.string.editar);
+        editar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                helper.abreEdicaoLugar(lugarSelecionado);
+                return false;
+            }
+        });
+
         MenuItem apagar = menu.add(R.string.apagar);
         apagar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override

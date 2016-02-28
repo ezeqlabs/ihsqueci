@@ -63,4 +63,22 @@ public class LugarDAO extends SQLiteOpenHelper {
         String[] args = { lugar.getId().toString() };
         getWritableDatabase().delete(TABELA, "id=?", args);
     }
+
+    public void altera(Lugar lugar){
+        ContentValues cv = new ContentValues();
+
+        cv.put("nome", lugar.getNome());
+        cv.put("trouxe", lugar.getTrouxe());
+
+        String[] args = { lugar.getId().toString() };
+        getWritableDatabase().update(TABELA, cv, "id=?", args);
+    }
+
+    public void insereOuAtualiza(Lugar lugar){
+        if(lugar.getId() == null){
+            this.insere(lugar);
+        }else{
+            this.altera(lugar);
+        }
+    }
 }

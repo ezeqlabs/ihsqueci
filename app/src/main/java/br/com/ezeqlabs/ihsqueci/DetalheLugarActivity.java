@@ -40,10 +40,9 @@ public class DetalheLugarActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
-        String naoImplementado = "Funcionalidade ainda não implementada :(";
         switch(item.getItemId()){
             case R.id.menu_detalhe_editar:
-                Toast.makeText(this, naoImplementado, Toast.LENGTH_SHORT).show();
+                helper.abreEdicaoLugar(lugar);
                 return false;
             case R.id.menu_detalhe_apagar:
                 helper.deletaLugar(lugar);
