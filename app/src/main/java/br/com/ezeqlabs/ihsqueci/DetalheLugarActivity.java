@@ -8,6 +8,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.ads.mediation.admob.AdMobAdapter;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import br.com.ezeqlabs.ihsqueci.helpers.LugaresHelper;
 import br.com.ezeqlabs.ihsqueci.modelo.Lugar;
 
@@ -22,6 +26,10 @@ public class DetalheLugarActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         TextView estou = (TextView) findViewById(R.id.detalhe_lugar_estou);
         TextView trouxe = (TextView) findViewById(R.id.detalhe_lugar_trouxe);

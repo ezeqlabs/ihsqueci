@@ -8,6 +8,9 @@
     <string name="apagar">Apagar este lugar</string>
     <string name="salvar">Salvar</string>
 
+    <!-- ADS -->
+    <string name="banner_ad_detalhe">ca-app-pub-8736689435854328/5338893191</string>
+
     <!-- LISTA LUGARES -->
     <string name="lista_descricao">Não esqueça mais nada por aí. Cadastre o lugar onde você está e o que trouxe.</string>
 
