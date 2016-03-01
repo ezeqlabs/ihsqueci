@@ -9,6 +9,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,6 +23,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import br.com.ezeqlabs.ihsqueci.dao.LugarDAO;
 import br.com.ezeqlabs.ihsqueci.helpers.LugaresHelper;
@@ -52,6 +55,10 @@ public class ListaLugaresActivity extends AppCompatActivity {
                 startActivity(detalhe);
             }
         });
+    }
+
+    private void task(){
+        Log.i("TIMER", "TIMEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
     }
 
     protected void onResume(){

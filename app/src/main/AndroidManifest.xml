@@ -14,6 +14,13 @@
         <activity
             android:name=".ListaLugaresActivity"
             android:label="@string/title_activity_lista_lugares"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity android:name=".FormularioLugaresActivity" />
+        <activity android:name=".DetalheLugarActivity" />
+
+        <activity
+            android:name=".BoasVindasActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,8 +28,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FormularioLugaresActivity" />
-        <activity android:name=".DetalheLugarActivity"></activity>
     </application>
 
 </manifest>
