@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import br.com.ezeqlabs.ihsqueci.dao.LugarDAO;
 import br.com.ezeqlabs.ihsqueci.helpers.FormularioLugaresHelper;
 import br.com.ezeqlabs.ihsqueci.modelo.Lugar;
@@ -25,6 +28,10 @@ public class FormularioLugaresActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        AdView mAdView = (AdView) findViewById(R.id.adView_formulario);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         final Lugar lugarSelecionado = (Lugar) getIntent().getSerializableExtra(LUGAR_SELECIONADO);
 
