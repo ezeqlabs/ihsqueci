@@ -41,6 +41,19 @@
                 android:layout_width="match_parent">
 
                 <EditText
+                    android:id="@+id/formulario_campo_endereco"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/formulario_hint_endereco"
+                    android:layout_marginBottom="16dp" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent">
+
+                <EditText
                     android:id="@+id/formulario_campo_trouxe"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

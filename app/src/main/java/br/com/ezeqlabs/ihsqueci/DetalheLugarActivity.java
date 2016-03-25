@@ -33,11 +33,18 @@ public class DetalheLugarActivity extends AppCompatActivity {
 
         TextView estou = (TextView) findViewById(R.id.detalhe_lugar_estou);
         TextView trouxe = (TextView) findViewById(R.id.detalhe_lugar_trouxe);
+        TextView endereco = (TextView) findViewById(R.id.detalhe_lugar_estou_endereco);
 
         lugar = (Lugar) getIntent().getSerializableExtra("lugarSelecionado");
 
         estou.setText(lugar.getNome());
         trouxe.setText(lugar.getTrouxe());
+        if(lugar.getEndereco() != null){
+            endereco.setText("("+lugar.getEndereco()+")");
+        }else{
+            endereco.setText(" ");
+        }
+
     }
 
     @Override

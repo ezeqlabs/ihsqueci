@@ -56,7 +56,7 @@ public class FormularioLugaresActivity extends AppCompatActivity {
                 this.finish();
                 return true;
             case R.id.menu_formulario_ok:
-                Lugar lugar = helper.pegaLugarDoFormulario();
+                Lugar lugar = helper.pegaLugarDoFormulario(this);
 
                 if(helper.temNome()){
                     if(helper.trouxeAlgo()){

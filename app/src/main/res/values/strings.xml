@@ -20,6 +20,7 @@
 
     <!-- FORMULARIO -->
     <string name="formulario_hint_nome">Nome do lugar</string>
+    <string name="formulario_hint_endereco">Endereço (Rua número, bairro, cidade)</string>
     <string name="formulario_hint_trouxe">Não posso esquecer</string>
 
     <!-- MENU LISTA LUGARES -->

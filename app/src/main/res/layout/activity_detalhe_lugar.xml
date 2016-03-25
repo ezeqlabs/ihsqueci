@@ -20,8 +20,14 @@
             android:id="@+id/detalhe_lugar_estou"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
             android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/detalhe_lugar_estou_endereco"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:textSize="15sp"/>
 
         <TextView
             android:layout_width="match_parent"

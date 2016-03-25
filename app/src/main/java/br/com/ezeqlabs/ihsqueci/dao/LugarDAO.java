@@ -15,7 +15,7 @@ import br.com.ezeqlabs.ihsqueci.modelo.Lugar;
 public class LugarDAO extends SQLiteOpenHelper {
     private static final String DATABASE = "ihsqueci";
     private static final String TABELA = "lugares";
-    private static final int DB_VERSION = 1;
+    private static final int DB_VERSION = 3;
 
     public LugarDAO(Context context){
         super(context, DATABASE, null, DB_VERSION);
@@ -25,18 +25,37 @@ public class LugarDAO extends SQLiteOpenHelper {
         String ddl = "CREATE TABLE " + TABELA
                 + " (id INTEGER PRIMARY KEY, "
                 + " nome TEXT, "
-                + " trouxe TEXT);";
+                + " trouxe TEXT, "
+                + " endereco TEXT, "
+                + " latitude REAL, "
+                + " longitude REAL);";
 
         database.execSQL(ddl);
     }
 
-    public void onUpgrade(SQLiteDatabase database, int versaoAntiga, int versaoNova){}
+    public void onUpgrade(SQLiteDatabase database, int versaoAntiga, int versaoNova){
+        switch(versaoAntiga){
+            case 1:
+                String sql = "ALTER TABLE " + TABELA + " ADD COLUMN endereco TEXT;";
+                database.execSQL(sql);
+
+            case 2:
+                sql = "ALTER TABLE " + TABELA + " ADD COLUMN latitude REAL;";
+                database.execSQL(sql);
+                sql = "ALTER TABLE " + TABELA + " ADD COLUMN longitude REAL;";
+                database.execSQL(sql);
+
+        }
+    }
 
     public void insere(Lugar lugar){
         ContentValues values = new ContentValues();
 
         values.put("nome", lugar.getNome());
         values.put("trouxe", lugar.getTrouxe());
+        values.put("endereco", lugar.getEndereco());
+        values.put("latitude", lugar.getLatitude());
+        values.put("longitude", lugar.getLongitude());
 
         getWritableDatabase().insert(TABELA, null, values);
     }
@@ -51,6 +70,9 @@ public class LugarDAO extends SQLiteOpenHelper {
             lugar.setId(c.getLong(c.getColumnIndex("id")));
             lugar.setNome(c.getString(c.getColumnIndex("nome")));
             lugar.setTrouxe(c.getString(c.getColumnIndex("trouxe")));
+            lugar.setEndereco(c.getString(c.getColumnIndex("endereco")));
+            lugar.setLatitude(c.getDouble(c.getColumnIndex("latitude")));
+            lugar.setLongitude(c.getDouble(c.getColumnIndex("longitude")));
 
             lugares.add(lugar);
         }
@@ -65,13 +87,16 @@ public class LugarDAO extends SQLiteOpenHelper {
     }
 
     public void altera(Lugar lugar){
-        ContentValues cv = new ContentValues();
+        ContentValues values = new ContentValues();
 
-        cv.put("nome", lugar.getNome());
-        cv.put("trouxe", lugar.getTrouxe());
+        values.put("nome", lugar.getNome());
+        values.put("trouxe", lugar.getTrouxe());
+        values.put("endereco", lugar.getEndereco());
+        values.put("latitude", lugar.getLatitude());
+        values.put("longitude", lugar.getLongitude());
 
         String[] args = { lugar.getId().toString() };
-        getWritableDatabase().update(TABELA, cv, "id=?", args);
+        getWritableDatabase().update(TABELA, values, "id=?", args);
     }
 
     public void insereOuAtualiza(Lugar lugar){
