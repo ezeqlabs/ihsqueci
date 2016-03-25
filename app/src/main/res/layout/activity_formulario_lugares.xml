@@ -13,33 +13,46 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/formulario_campo_nome"
-                android:layout_width="match_parent"
+            <com.google.android.gms.ads.AdView
+                android:id="@+id/adView_formulario"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="@string/formulario_hint_nome"
-                android:layout_marginBottom="16dp" />
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="10dp"
+                ads:adSize="SMART_BANNER"
+                ads:adUnitId="@string/banner_ad_formulario" />
 
-            <EditText
-                android:id="@+id/formulario_campo_trouxe"
-                android:layout_width="match_parent"
+            <android.support.design.widget.TextInputLayout
                 android:layout_height="wrap_content"
-                android:lines="10"
-                android:gravity="top"
-                android:hint="@string/formulario_hint_trouxe" />
+                android:layout_width="match_parent">
+
+                <EditText
+                    android:id="@+id/formulario_campo_nome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/formulario_hint_nome"
+                    android:layout_marginBottom="16dp" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent">
+
+                <EditText
+                    android:id="@+id/formulario_campo_trouxe"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lines="10"
+                    android:gravity="top"
+                    android:hint="@string/formulario_hint_trouxe" />
+
+            </android.support.design.widget.TextInputLayout>
 
         </LinearLayout>
 
     </ScrollView>
-
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adView_formulario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        ads:adSize="SMART_BANNER"
-        ads:adUnitId="@string/banner_ad_formulario" />
 
 </RelativeLayout>
 
