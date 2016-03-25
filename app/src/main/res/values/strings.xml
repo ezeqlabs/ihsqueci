@@ -7,6 +7,8 @@
     <string name="editar">Editar este lugar</string>
     <string name="apagar">Apagar este lugar</string>
     <string name="salvar">Salvar</string>
+    <string name="adicionado_sucesso"> adicionado com sucesso</string>
+    <string name="alterado_sucesso"> alterado com sucesso</string>
 
     <!-- ADS -->
     <string name="banner_ad_listagem">ca-app-pub-8736689435854328/1048294392</string>

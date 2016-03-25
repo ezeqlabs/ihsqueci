@@ -80,10 +80,10 @@ public class FormularioLugaresActivity extends AppCompatActivity {
 
     private void finalizaAcao(Lugar lugar){
         if(lugar.getId() == null){
-            Toast.makeText(this, (lugar.getNome().toString() + " adicionado com sucesso"), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, (lugar.getNome().toString() + " " + getString(R.string.adicionado_sucesso)), Toast.LENGTH_SHORT).show();
             finish();
         }else{
-            Toast.makeText(this, (lugar.getNome().toString() + " alterado com sucesso"), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, (lugar.getNome().toString() + " " + getString(R.string.alterado_sucesso)), Toast.LENGTH_SHORT).show();
             Intent lista = new Intent(FormularioLugaresActivity.this, ListaLugaresActivity.class);
             startActivity(lista);
         }
