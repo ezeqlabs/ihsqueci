@@ -1,12 +1,7 @@
 package br.com.ezeqlabs.ihsqueci.helpers;
 
 import android.content.Context;
-import android.location.Address;
-import android.location.Geocoder;
-import android.util.Log;
 import android.widget.EditText;
-
-import java.util.List;
 
 import br.com.ezeqlabs.ihsqueci.FormularioLugaresActivity;
 import br.com.ezeqlabs.ihsqueci.R;
