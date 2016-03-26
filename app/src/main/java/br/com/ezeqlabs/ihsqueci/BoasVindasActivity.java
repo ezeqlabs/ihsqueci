@@ -17,8 +17,9 @@ public class BoasVindasActivity extends AppCompatActivity {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                Intent teste = new Intent(BoasVindasActivity.this, ListaLugaresActivity.class);
-                startActivity(teste);
+                Intent lugares = new Intent(BoasVindasActivity.this, ListaLugaresActivity.class);
+                startActivity(lugares);
+                finish();
             }
         }, 2000);
     }
