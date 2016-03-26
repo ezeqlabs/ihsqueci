@@ -27,21 +27,15 @@ public class FormularioLugaresEspressoTest {
     @Test
     public void temCampoNome(){
         onView(withId(R.id.formulario_campo_nome)).check(matches(isDisplayed()));
-        onView(withId(R.id.formulario_campo_nome)).check(matches(isEnabled()));
-        onView(withId(R.id.formulario_campo_nome)).check(matches(isFocusable()));
     }
 
     @Test
     public void temCampoEndereco(){
         onView(withId(R.id.formulario_campo_endereco)).check(matches(isDisplayed()));
-        onView(withId(R.id.formulario_campo_endereco)).check(matches(isEnabled()));
-        onView(withId(R.id.formulario_campo_endereco)).check(matches(isFocusable()));
     }
 
     @Test
     public void temCampoTrouxe(){
         onView(withId(R.id.formulario_campo_trouxe)).check(matches(isDisplayed()));
-        onView(withId(R.id.formulario_campo_trouxe)).check(matches(isEnabled()));
-        onView(withId(R.id.formulario_campo_trouxe)).check(matches(isFocusable()));
     }
 }
