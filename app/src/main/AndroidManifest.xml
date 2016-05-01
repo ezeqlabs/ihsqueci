@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.ezeqlabs.ihsqueci">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -15,12 +15,13 @@
             android:name=".ListaLugaresActivity"
             android:label="@string/title_activity_lista_lugares"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity android:name=".FormularioLugaresActivity" />
         <activity android:name=".DetalheLugarActivity" />
-
         <activity
             android:name=".BoasVindasActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity android:name=".EzeqlabsActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
