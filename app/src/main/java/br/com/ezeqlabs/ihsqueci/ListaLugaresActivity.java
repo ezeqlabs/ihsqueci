@@ -83,7 +83,7 @@ public class ListaLugaresActivity extends AppCompatActivity {
     }
 
     private void populaRecyclerView(){
-        ListaLugaresAdapter adapter = new ListaLugaresAdapter(helper.populaListagem());
+        ListaLugaresAdapter adapter = new ListaLugaresAdapter(helper.populaListagem(), ListaLugaresActivity.this);
         listaLugares.setAdapter(adapter);
     }
 

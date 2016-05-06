@@ -17,10 +17,18 @@ import br.com.ezeqlabs.ihsqueci.helpers.LugaresHelper;
 import br.com.ezeqlabs.ihsqueci.modelo.Lugar;
 
 public class ListaLugaresAdapter extends RecyclerView.Adapter<ListaLugaresAdapter.LugarViewHolder> {
-    private List<Lugar> listaLugares;
+    public static List<Lugar> listaLugares;
+    public static Activity listaLugaresActivity;
 
-    public ListaLugaresAdapter(List<Lugar> listaLugares){
+    public ListaLugaresAdapter(List<Lugar> listaLugares, Activity activity){
         this.listaLugares = listaLugares;
+        listaLugaresActivity = activity;
+    }
+
+    public static void vaiParaDetalhe(int posicao){
+        Intent detalhe = new Intent(listaLugaresActivity, DetalheLugarActivity.class);
+        detalhe.putExtra("lugarSelecionado", listaLugares.get(posicao));
+        listaLugaresActivity.startActivity(detalhe);
     }
 
     @Override
@@ -50,14 +58,20 @@ public class ListaLugaresAdapter extends RecyclerView.Adapter<ListaLugaresAdapte
         super.onAttachedToRecyclerView(recyclerView);
     }
 
-    public static class LugarViewHolder extends RecyclerView.ViewHolder {
+    public static class LugarViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         protected TextView nomeLugar;
         protected TextView enderecoLugar;
 
         public LugarViewHolder(View itemView) {
             super(itemView);
+            itemView.setOnClickListener(this);
             nomeLugar = (TextView) itemView.findViewById(R.id.nome_lugar);
             enderecoLugar = (TextView) itemView.findViewById(R.id.endereco_lugar);
+        }
+
+        @Override
+        public void onClick(View v) {
+            vaiParaDetalhe(getAdapterPosition());
         }
     }
 
