@@ -4,17 +4,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import br.com.ezeqlabs.ihsqueci.adapters.ListaLugaresAdapter;
 import br.com.ezeqlabs.ihsqueci.helpers.LugaresHelper;
 import br.com.ezeqlabs.ihsqueci.modelo.Lugar;
 
 public class ListaLugaresActivity extends AppCompatActivity {
-    private ListView listaLugares;
+    private RecyclerView listaLugares;
     private LugaresHelper helper = new LugaresHelper(ListaLugaresActivity.this);
 
     @Override
@@ -22,13 +25,13 @@ public class ListaLugaresActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_lugares);
 
-        helper.populaListagem();
+        trataListagem();
         trataFloatingButton();
 
-        listaLugares = (ListView) findViewById(R.id.lista_lugares);
         registerForContextMenu(listaLugares);
 
-        listaLugares.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        /*
+        listaLugares.setOnClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent detalhe = new Intent(ListaLugaresActivity.this, DetalheLugarActivity.class);
@@ -37,22 +40,23 @@ public class ListaLugaresActivity extends AppCompatActivity {
                 startActivity(detalhe);
             }
         });
+        */
     }
 
     protected void onResume(){
         super.onResume();
-        helper.populaListagem();
+        populaRecyclerView();
     }
 
     public void onCreateContextMenu(ContextMenu menu, View view, ContextMenu.ContextMenuInfo menuInfo){
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
-        final Lugar lugarSelecionado = (Lugar) listaLugares.getAdapter().getItem(info.position);
+        //final Lugar lugarSelecionado = (Lugar) listaLugares.getAdapter().getItemId(info.position);
 
         MenuItem editar = menu.add(R.string.editar);
         editar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                helper.abreEdicaoLugar(lugarSelecionado);
+          //      helper.abreEdicaoLugar(lugarSelecionado);
                 return false;
             }
         });
@@ -61,10 +65,26 @@ public class ListaLugaresActivity extends AppCompatActivity {
         apagar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                helper.deletaLugar(lugarSelecionado);
+                //helper.deletaLugar(lugarSelecionado);
                 return false;
             }
         });
+    }
+
+    private void trataListagem(){
+        listaLugares = (RecyclerView) findViewById(R.id.lista_lugares);
+        listaLugares.setHasFixedSize(true);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        listaLugares.setLayoutManager(linearLayoutManager);
+
+        populaRecyclerView();
+    }
+
+    private void populaRecyclerView(){
+        ListaLugaresAdapter adapter = new ListaLugaresAdapter(helper.populaListagem());
+        listaLugares.setAdapter(adapter);
     }
 
     private void trataFloatingButton(){

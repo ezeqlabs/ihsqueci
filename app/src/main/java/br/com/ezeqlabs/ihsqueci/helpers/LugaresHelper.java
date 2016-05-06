@@ -53,13 +53,15 @@ public class LugaresHelper {
         activity.startActivity(intent);
     }
 
-    public void populaListagem(){
-        ListView listaLugares = (ListView) activity.findViewById(R.id.lista_lugares);
+    public List<Lugar> populaListagem(){
         LugarDAO dao = new LugarDAO(activity);
         List<Lugar> lugares = dao.getListaLugares();
         dao.close();
 
-        ArrayAdapter<Lugar> adapter = new ArrayAdapter<Lugar>(activity, android.R.layout.simple_list_item_1, lugares);
-        listaLugares.setAdapter(adapter);
+        return lugares;
+    }
+
+    public Lugar getLugarLista(int posicao){
+        return populaListagem().get(posicao);
     }
 }
