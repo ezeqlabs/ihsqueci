@@ -47,7 +47,7 @@ public class FormularioLugaresHelper {
     }
 
     public void erroNome(){
-        nome.setError("Nome não pode estar em branco");
+        nome.setError("Nome não pode ficar em branco");
     }
 
     public boolean trouxeAlgo(){
@@ -56,5 +56,13 @@ public class FormularioLugaresHelper {
 
     public void erroTrouxe(){
         trouxe.setError("Não trouxe nada para esse lugar?");
+    }
+
+    public boolean temEndereco(){
+        return !endereco.getText().toString().isEmpty();
+    }
+
+    public void erroEndereco(){
+        endereco.setError("Endereço não pode ficar em branco");
     }
 }

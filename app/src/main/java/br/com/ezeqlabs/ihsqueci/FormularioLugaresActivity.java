@@ -56,14 +56,18 @@ public class FormularioLugaresActivity extends AppCompatActivity {
                 Lugar lugar = helper.pegaLugarDoFormulario(this);
 
                 if(helper.temNome()){
-                    if(helper.trouxeAlgo()){
-                        LugarDAO dao = new LugarDAO(this);
-                        dao.insereOuAtualiza(lugar);
-                        dao.close();
+                    if(helper.temEndereco()){
+                        if(helper.trouxeAlgo()){
+                            LugarDAO dao = new LugarDAO(this);
+                            dao.insereOuAtualiza(lugar);
+                            dao.close();
 
-                        finalizaAcao(lugar);
+                            finalizaAcao(lugar);
+                        }else{
+                            helper.erroTrouxe();
+                        }
                     }else{
-                        helper.erroTrouxe();
+                        helper.erroEndereco();
                     }
                 }else{
                     helper.erroNome();
