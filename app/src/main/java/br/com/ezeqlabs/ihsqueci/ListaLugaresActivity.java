@@ -15,6 +15,7 @@ import android.widget.ListView;
 import br.com.ezeqlabs.ihsqueci.adapters.ListaLugaresAdapter;
 import br.com.ezeqlabs.ihsqueci.helpers.LugaresHelper;
 import br.com.ezeqlabs.ihsqueci.modelo.Lugar;
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
 
 public class ListaLugaresActivity extends AppCompatActivity {
     private RecyclerView listaLugares;
@@ -25,22 +26,13 @@ public class ListaLugaresActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_lugares);
 
+        FloatingActionButton adicionaLugar = (FloatingActionButton) findViewById(R.id.floating_adiciona_lugar);
+
         trataListagem();
-        trataFloatingButton();
+        trataFloatingButton(adicionaLugar);
+        trataTutorial(adicionaLugar);
 
         registerForContextMenu(listaLugares);
-
-        /*
-        listaLugares.setOnClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent detalhe = new Intent(ListaLugaresActivity.this, DetalheLugarActivity.class);
-
-                detalhe.putExtra("lugarSelecionado", (Lugar) listaLugares.getItemAtPosition(position));
-                startActivity(detalhe);
-            }
-        });
-        */
     }
 
     protected void onResume(){
@@ -50,13 +42,11 @@ public class ListaLugaresActivity extends AppCompatActivity {
 
     public void onCreateContextMenu(ContextMenu menu, View view, ContextMenu.ContextMenuInfo menuInfo){
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
-        //final Lugar lugarSelecionado = (Lugar) listaLugares.getAdapter().getItemId(info.position);
 
         MenuItem editar = menu.add(R.string.editar);
         editar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-          //      helper.abreEdicaoLugar(lugarSelecionado);
                 return false;
             }
         });
@@ -65,7 +55,6 @@ public class ListaLugaresActivity extends AppCompatActivity {
         apagar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                //helper.deletaLugar(lugarSelecionado);
                 return false;
             }
         });
@@ -87,8 +76,7 @@ public class ListaLugaresActivity extends AppCompatActivity {
         listaLugares.setAdapter(adapter);
     }
 
-    private void trataFloatingButton(){
-        FloatingActionButton adicionaLugar = (FloatingActionButton) findViewById(R.id.floating_adiciona_lugar);
+    private void trataFloatingButton(FloatingActionButton adicionaLugar){
         adicionaLugar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,6 +84,16 @@ public class ListaLugaresActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void trataTutorial(FloatingActionButton adicionaLugar){
+        new MaterialShowcaseView.Builder(this)
+                .setTarget(adicionaLugar)
+                .setDismissText(R.string.tutorial_botao)
+                .setContentText(R.string.tutorial_texto)
+                .setDelay(500)
+                .singleUse("1")
+                .show();
     }
 
 }

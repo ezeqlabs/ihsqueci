@@ -17,6 +17,8 @@
     <string name="banner_ad_detalhe">ca-app-pub-8736689435854328/5338893191</string>
 
     <!-- LISTA LUGARES -->
+    <string name="tutorial_texto">Cadastre onde você está, o que trouxe, e não esqueça mais nada por aí</string>
+    <string name="tutorial_botao">Entendi</string>
     <string name="lista_descricao">Não esqueça mais nada por aí. Cadastre o lugar onde você está e o que trouxe.</string>
 
     <!-- FORMULARIO -->
